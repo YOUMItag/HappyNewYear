@@ -55,6 +55,20 @@ docs/screenshots/      README 用图
 
 > `Library/`、`Build/`、`Dist/`、`Logs/`、`UserSettings/` 是本地产物，已在 `.gitignore` 中排除，克隆后由编辑器重新生成。
 
+## 构建（Windows）
+
+用批处理脚本打包，**日志固定写在项目内的 `Logs/batchmode/`**，不会散落到工程目录之外：
+
+```bash
+Tools\build-batchmode.bat              # 打 Windows 包
+Tools\build-batchmode.bat --check      # 只打印解析出的路径，不执行
+Tools\build-batchmode.bat <类名.方法名>  # 跑任意 Editor 方法
+```
+
+脚本里把编辑器路径落在 `D://Unity//2022.3.62t14//Editor//Tuanjie.exe`，换机器时改这一行即可。
+
+> 直接手工调用 `Unity.exe -logFile ...` 时，日志路径是相对**当前工作目录**解析的。如果从编辑器安装目录启动，就会在 `D://Unity//` 根下生成一堆 `_build*.log`——这正是本脚本要避免的情况。
+
 ## 测试
 
 ```bash
