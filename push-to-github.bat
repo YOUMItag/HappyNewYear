@@ -24,7 +24,7 @@ rem ---------- repository address ----------
 rem Priority: 1) command line argument  2) repo-url.txt  3) built-in default
 set "REMOTE=%~1"
 if "%REMOTE%"=="" if exist "repo-url.txt" set /p REMOTE=<repo-url.txt
-if "%REMOTE%"=="" set "REMOTE=https://github.com/YOUMItag/HappyNewYear.git"
+if "%REMOTE%"=="" set "REMOTE=https://github.com/YOUMItag/Game.git"
 
 echo Repository: %REMOTE%
 echo.
