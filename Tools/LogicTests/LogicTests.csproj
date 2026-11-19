@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    逻辑层测试工程。
+    直接编译 ../../Assets/Scripts/Core 下的源码，因此：
+      1. Core 层一旦误加 using UnityEngine，这里立刻编译失败 —— 零引擎依赖是编译期保证，不靠人工检查。
+      2. LangVersion 锁 9.0，与 Unity 2022.3 支持的 C# 版本一致，防止用了 Unity 编不过的新语法。
+    Tools/ 目录在 Assets 之外，Unity 不会导入它。
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName>LogicTests</AssemblyName>
+    <RootNamespace>LogicTests</RootNamespace>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="../../Assets/Scripts/Core/**/*.cs" />
+  </ItemGroup>
+
+</Project>

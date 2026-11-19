@@ -1,0 +1,63 @@
+# Unity 生成目录
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# IDE / 解决方案（由 Unity 生成）
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.vs/
+.idea/
+.vscode/
+
+# 构建产物
+*.apk
+*.aab
+*.unitypackage
+*.app
+ExportedObj/
+crashlytics-build.properties
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 本工程自建：逻辑层测试的编译产物
+/Tools/LogicTests/bin/
+/Tools/LogicTests/obj/
+
+# 分发包与压缩包（发版走 Releases，不进仓库）
+/Dist/
+*.zip
+
+# dotnet 工具的中间产物
+Tools/**/obj/
+Tools/**/bin/
+
+# 日志
+*.log
+*.stackdump
+
+# 本地演示/录屏
+*.mp4
+
+# 例外：Tools 下的 .csproj 是本仓库源码，不是 Unity 生成的
+!Tools/**/*.csproj

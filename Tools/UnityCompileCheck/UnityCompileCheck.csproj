@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    仅用于「编译校验」的工程：不做任何运行，只把 Assets/Scripts 下全部脚本
+    （含 Unity 依赖的 UI / Gameplay / Boot / Editor）对着团结引擎的真实程序集编译一遍，
+    用来在不开编辑器的前提下抓出 API 拼写错误、签名不匹配、命名空间写错。
+
+    它不参与构建，产物直接丢弃。
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName>UnityCompileCheck</AssemblyName>
+    <RootNamespace>UnityCompileCheck</RootNamespace>
+    <NoWarn>CS1701;CS1702;CS0436;CS0649</NoWarn>
+    <DefineConstants>UNITY_EDITOR;UNITY_2022_3_OR_NEWER</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../Assets/Scripts/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      只引 UnityEngine 目录下的模块化程序集（含 UnityEditor.*Module.dll）。
+      不要再单独引 Managed/UnityEditor.dll —— 它与 UnityEditor.CoreModule.dll 重复定义了
+      MenuItem 等类型，会触发 CS0433「类型同时存在于两个程序集」。
+    -->
+    <UnityManagedDll Include="D:\Unity\2022.3.62t14\Editor\Data\Managed\UnityEngine\*.dll" />
+    <ProjectScriptDll Include="$(MSBuildThisFileDirectory)../../Library/ScriptAssemblies/Unity.TextMeshPro.dll" />
+    <ProjectScriptDll Include="$(MSBuildThisFileDirectory)../../Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" />
+    <ProjectScriptDll Include="$(MSBuildThisFileDirectory)../../Library/ScriptAssemblies/UnityEngine.UI.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="@(UnityManagedDll)">
+      <HintPath>%(FullPath)</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="@(ProjectScriptDll)">
+      <HintPath>%(FullPath)</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

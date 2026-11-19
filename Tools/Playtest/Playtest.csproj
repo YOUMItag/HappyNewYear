@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    离线批量试玩脚本。
+    只编译 Assets/Scripts/Core（零引擎依赖），因此不需要打开 Unity，几十秒能跑几百局。
+    用途：替代手工试玩，量化「这游戏到底有多难」——星级分布、分数分位、洗牌频率、规则占比。
+
+    运行方式见 11-试玩脚本使用说明.md，或直接 dotnet run -c Release
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName>Playtest</AssemblyName>
+    <RootNamespace>Playtest</RootNamespace>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="../../Assets/Scripts/Core/**/*.cs" />
+  </ItemGroup>
+
+</Project>
