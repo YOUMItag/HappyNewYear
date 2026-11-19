@@ -3,7 +3,7 @@ setlocal EnableExtensions
 cd /d "%~dp0"
 
 echo ============================================================
-echo   HappyNewYear  ->  GitHub  (push only)
+echo   HappyNewYear  --  GitHub  (push only)
 echo ============================================================
 echo.
 
