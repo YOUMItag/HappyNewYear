@@ -98,4 +98,7 @@ git push -u origin main
 
 ## License
 
-代码以 MIT 协议开源；`Assets/Art/Fonts` 下的字体遵循 SIL OFL 1.1。
+- 本项目代码：MIT，见 [LICENSE](LICENSE)
+- 字体 [Noto Sans SC](https://fonts.google.com/noto/specimen/Noto+Sans+SC)：SIL Open Font License 1.1，
+  版权声明与许可证原文见 [Assets/Art/Fonts/NotoSansSC-OFL.txt](Assets/Art/Fonts/NotoSansSC-OFL.txt)
+- Unity TextMesh Pro 自带的 Liberation Sans：同样为 SIL OFL 1.1，见 `Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt`
